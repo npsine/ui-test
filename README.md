@@ -1,46 +1,157 @@
-# Getting Started with Create React App
+# UI Component & Logic Implementation
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- [UI Live Demo](https://ui-test-olive.vercel.app/)
+- [Logic Implementation](https://github.com/npsine/ui-test/tree/main/src/helpers)
 
-## Available Scripts
+## UI Implementation
 
-In the project directory, you can run:
+### Requirements
+Create a responsive ui interface with:
+- Loan approval display
+- Amount visualization
+- Service activation button
+- Terms & conditions section
 
-### `npm start`
+**Tech Constraints:**
+- Pure HTML/CSS only
+- Mobile-first approach
+- Cross-browser compatibility
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Features
+```html
+<div className="container">
+    <header>
+        <img src={icBack} alt="Back" className="back"/>
+        <h1>สินเชื่อ เพย์ เน็กซ์ เอ็กซ์ตร้า</h1>
+        <img src={icClose} alt="Close" className="close"/>
+    </header>
+    <div className="content">
+        <img src={icCongratulation} alt="Congratulations" className="img-congratulations"/>
+        <h2>ยินดีด้วย!</h2>
+        <p>สินเชื่อ เพย์ เน็กซ์ เอ็กซ์ตร้า ของคุณ <br/>ได้รับการอนุมัติแล้ว</p>
+        <div className="info-box">
+            <span>วงเงินสินเชื่อที่ได้รับอนุมัติ</span>
+            <span className="amount">฿ 50,000.00</span>
+        </div>
+        <p className="note">แจ้งบริการหักชำระสินเชื่ออัตโนมัติ<br/>
+            บริษัทจะดำเนินการหักชำระหนี้ทั้งหมดผ่านบัญชีทรูมันนี่/ช่องทางอื่นๆที่ผูกไว้กับทรูมันนี้ กรณีผิดนัดชำระสินเชื่อเท่านั้น</p>
+    </div>
+    <button className="action-button">เริ่มใช้งานเพย์ เน็กซ์ เอ็กซ์ตร้า</button>
+</div>
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```scss
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+}
 
-### `npm test`
+body {
+  background: white;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
+}
 
-### `npm run build`
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+  z-index: 1000;
+}
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+.content {
+  width: 100%;
+  max-width: 600px;
+}
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+h1 {
+  font-size: 18px;
+}
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+.back, .close {
+  cursor: pointer;
+  font-size: 24px;
+  padding: 5px 10px;
+}
 
-### `npm run eject`
+.img-congratulations {
+  width: 60%;
+  max-width: 200px;
+  margin: 20px auto;
+}
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+h2 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+p {
+  color: #666;
+  font-size: 14px;
+}
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+.info-box {
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+  margin: 20px auto;
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 16px;
+}
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+.amount {
+  color: #000;
+}
 
-## Learn More
+.note {
+  font-size: 12px;
+  color: #888;
+  margin: 15px 0;
+}
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+.action-button {
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  background: #ff7f00;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 40px;
+  border: none;
+  margin-top: 10px;
+}
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+.action-button:hover {
+  background: #e56c2c;
+}
+```
